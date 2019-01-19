@@ -5,26 +5,28 @@ function getIndexToIns(arr, num) {
   arr.sort();
   
   for (var i = 0; i < arr.length; i++) {
-    // if sum and current value are the same
+
+    // check for match
     if (num == arr[i]) {
-      console.log(i);
       value = i;
       break;      
     }
-    else if (num > arr[i] && num < arr[i + 1]) {
-      value = i + 1;
+
+    // check if num is lower then current item
+    else if (num < arr[i]) {
+      value = i - 1;
       break;      
     }
-    else if (num > arr[arr.length - 1]) {
+    else {
       value = arr.length - 1;
       break;
     }
   }
-  console.log(value);
 
+  console.log(value);
   return value;
 
   
 }
 
-getIndexToIns([3, 10, 5], 3);
+getIndexToIns([10, 20, 30, 40, 50], 35);
