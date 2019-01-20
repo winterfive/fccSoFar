@@ -1,32 +1,64 @@
-function getIndexToIns(arr, num) {
+function mutation(arr) {
 
-  var value = 0;
+  const searchers = arr[1];
+  const searchable = arr[0];
+  let result = true;
+  const x = [];
 
-  arr.sort();
-  
-  for (var i = 0; i < arr.length; i++) {
-
-    // check for match
-    if (num == arr[i]) {
-      value = i;
-      break;      
-    }
-
-    // check if num is lower then current item
-    else if (num < arr[i]) {
-      value = i - 1;
-      break;      
-    }
-    else {
-      value = arr.length - 1;
-      break;
-    }
+  // create array of letters from searchers
+  for (var j = 0; j < searchers.length; j++) {
+    x.push(searchers[j]);
   }
 
-  console.log(value);
-  return value;
+  //console.log(x); // good to here
 
-  
+  // test each letter in searchable against each value in x
+  for (var i = 0; i < x.length; i++) {
+    if (searchable.indexOf(x[i]) < 0) {
+      result = false;
+    }
+
+    result = true;
+  }
+
+  return result;
+
+/*
+  // use a regex test
+  const searchTerm = arr[1];
+  const searchable = arr[0];
+  let regex = RegExp(/[searchTerm]/ig);
+
+  let result = regex.test(searchable)
+
+  // since each letter, need to use iteration?
+  // break string into seperate letter array?
+  console.log(result);
+  return result;
 }
+*/
 
-getIndexToIns([10, 20, 30, 40, 50], 35);
+/*
+function mutation(arr) {
+
+  const seekers = [];
+  const searchable = arr[0];
+
+  for (var i = 0; i < arr[1].length; i++) {
+    // tried adding + after each letter
+    seekers.push(arr[1][i]);
+  }
+
+  seekers.push("+");
+  console.log(seekers);
+
+  let regex = RegExp(/[seekers]/ig);
+
+  let result = regex.test(searchable);
+
+  console.log(result);
+  return result;
+}
+*/
+
+}
