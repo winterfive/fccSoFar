@@ -35,27 +35,3 @@ function chunkArrayInGroups(arr, size) {
 }
 
 chunkArrayInGroups(["a", "b", "c", "d"], 2);
-/*
-function mutation(arr) {
-
-  const seekers = [];
-  const searchable = arr[0];
-
-  for (var i = 0; i < arr[1].length; i++) {
-    // tried adding + after each letter
-    seekers.push(arr[1][i]);
-  }
-
-  seekers.push("+");
-  console.log(seekers);
-
-  let regex = RegExp(/[seekers]/ig);
-
-  let result = regex.test(searchable);
-
-  console.log(result);
-  return result;
-}
-*/
-
-}
