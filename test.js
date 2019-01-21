@@ -1,43 +1,40 @@
-function chunkArrayInGroups(arr, size) {
+function rot13(str) {
 
+  let arr = [];
   let result = [];
-  let subArr = [];  
-  let fullArraysNeeded = Math.floor(arr.length / size);  // the # of size-sized sub-arrays needed
-  let arrLen = arr.length;
-  let lastSubArrSize = arrLen % size; // size of last sub-array
+  let letCode, strLen = 0;
+  
+  // change all letters to uppercase, place in array
+  str = str.toUpperCase();
+  arr = str.split("");
 
-  for (var i = 0; i < arrLen; i++) {
-    // fill up the full-size subArrays
-    if (result.length < fullArraysNeeded) {
-      if(subArr.length < size) {
-        subArr.push(arr[i]);
-      } 
-      
-      if (subArr.length == size) {
-        result.push(subArr);
-        subArr = [];
-      }
-    }
+  strLen = arr.length;
 
-    // no more full-size subArrays needed
-    // create array of lastSubArrSize to handle remaining values in arr     
-    else {
-      // check if another subArray is needed
-      if (lastSubArrSize > 0) {
-          subArr.push(arr[i]);
-          lastSubArrSize--;    
+  // iterate through string
+  for (var x = 0; x < strLen; x++) {
+    if (/[a-z]/.test()) {
+      letCode = arr[x].charCodeAt();  
+
+      if ((letCode + 13) > 90) {
+        letCode = (letCode + 13) - 91 + 65;
+      } else {
+        letCode += 13;
       }
-      if (lastSubArrSize == 0) {
-        if (subArr != NaN)
-        result.push(subArr);
-        subArr = [];   
-      }
-         
+
+      // works to here
+      // get new letter and push it to result
+      let y = String.fromCharCode(letCode);
+      result.push(y);
+      console.log(y);      
+
+    } else {
+      result.push(arr[x]);
     }
   }
-  
-  console.log("result is: " + result);
-  return result;
+
+  let a = result.join();
+  return a;
 }
 
-chunkArrayInGroups([0, 1, 2, 3, 4, 5], 4);
+// Change the inputs below to test
+rot13("SERR PBQR PNZC");
