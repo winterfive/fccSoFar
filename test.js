@@ -1,6 +1,6 @@
 function telephoneCheck(str) {
 
-  let regex = /1?\s?((\(\d\d\d\))|(\d\d\d))\s?-?\d\d\d\s?-?\d\d\d\d/ig;
+  let regex = /^(1?\s?)?(\d{3}|\(\d{3}\))(\s?-?)?\d{3}(\s?-?)?\d{4}/g;
   if(regex.test(str)) {
     return true;
   } else {
@@ -9,7 +9,6 @@ function telephoneCheck(str) {
 }
 
 telephoneCheck("555-555-5555");
-
 /*
 function telephoneCheck(str) {
    
