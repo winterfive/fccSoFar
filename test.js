@@ -5,7 +5,9 @@ function telephoneCheck(str) {
 
   let regexTwo = /1?\s?([0-9]{3})-?\s?([0-9]{3})-?\s?([0-9]{4})/g;
 
-  if(regexOne.test(str) || regexTwo.test(str)) {
+  let regexThree = /1?\s?\(([0-9]{3})\)\s?([0-9]{3})-?([0-9]{4})/g;
+
+  if(regexOne.test(str) || regexTwo.test(str) || regexThree.test(str)) {
     return true;
   } else {
     return false;
