@@ -1,4 +1,17 @@
 function telephoneCheck(str) {
+
+  let regex = /1?\s?((\(\d\d\d\))|(\d\d\d))\s?-?\d\d\d\s?-?\d\d\d\d/ig;
+  if(regex.test(str)) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+telephoneCheck("555-555-5555");
+
+/*
+function telephoneCheck(str) {
    
   let regexOne = /^[0-9]{10, 10}/g;
   let regexTwo = /^1?\s?([0-9]{3})-?([0-9]{3})-?([0-9]{4})/g; // -
@@ -51,3 +64,4 @@ function telephoneCheck(str) {
 }
 
 telephoneCheck("27576227382");
+*/
