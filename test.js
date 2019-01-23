@@ -1,3 +1,5 @@
+// Regex for phone numbers (USA)
+
 function telephoneCheck(str) {
 
   let regex = /^(1?\s?)?(\d{3}|\(\d{3}\))(\s?-?)?\d{3}(\s?-?)?\d{4}$/g;
@@ -10,23 +12,22 @@ function telephoneCheck(str) {
 
 telephoneCheck("555-555-5555");
 
+// Functional Programming: reduce()
+
 var averageRating = 0;
+let sum = 0;
 let num = 0;
 let result;
 
-watchList.reduce(function(sum, current){
-  if(current.Director === "Christopher Nolan") {
-    sum += parseFloat(current.imdbRating);
+watchList.reduce((sum, current) => {
+  if(current.Director == "Christopher Nolan") {
     num++;
+    return sum + parseFloat(current.imdbRating);
   }
 
-  console.log(num);
+  console.log("sum is: " + sum);
+  console.log("num is:" + num);
 
-  return sum/num;
-});
-
-
-
-// Add your code above this line
-
-console.log(averageRating); 
+  averageRating = sum/num;
+  
+}, 0);
