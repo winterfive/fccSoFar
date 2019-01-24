@@ -35,15 +35,19 @@ watchList.reduce((sum, current) => {
 // Comparing two arrays
 
 function diffArray(arr1, arr2) {
-
   let newArr = arr1.concat(arr2);
   let result = [];
 
-  // if newArr[i] in both teh old arrays
-  // skip
-  // if in one old array
-  // add to result 
-  
+  for(let i = 0; i < newArr.length; i++) {
+    
+    let result1 = arr1.includes(newArr[i]);
+    let result2 = arr2.includes(newArr[i]);
+    
+    if(result1 != result2) {
+      result.push(newArr[i]);
+    }  
+  }
+  return result;
 }
 
 diffArray([1, 2, 3, 5], [1, 2, 3, 4, 5]);
