@@ -72,3 +72,29 @@ function destroyer(arr) {
 }
 
 destroyer([1, 2, 3, 1, 2, 3], 2, 3);
+
+// Searching key value paris array with a key value pair
+
+function whatIsInAName(collection, source) {
+  // What's in a name?
+  var arr = [];
+  // Only change code below this line
+  let keys = Object.keys(source);
+
+  // iterate through object
+  // compare object value to source values
+  // if match, add matched object pair to array
+  return collection.filter(function(item) {
+    for(let i = 0; i < keys.length; i++) {
+      if(!item.hasOwnProperty(keys[i]) || item[keys[i]] != source[keys[i]]) {
+        return false;
+      }
+    }
+    return true;
+  });
+  
+  // Only change code above this line
+  return arr;
+}
+
+whatIsInAName([{ first: "Romeo", last: "Montague" }, { first: "Mercutio", last: null }, { first: "Tybalt", last: "Capulet" }], { last: "Capulet" });
