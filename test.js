@@ -98,3 +98,20 @@ function whatIsInAName(collection, source) {
 }
 
 whatIsInAName([{ first: "Romeo", last: "Montague" }, { first: "Mercutio", last: null }, { first: "Tybalt", last: "Capulet" }], { last: "Capulet" });
+
+// Split strings and join with -'s
+
+function spinalCase(str) {
+  // "It's such a fine line between stupid, and clever."
+  // --David St. Hubbins
+  //let regex = /\s|\_|?=[A-Z]|\-/g;
+
+  let arr = str.split(/\s|\_|(?=[A-Z])|\-/g);
+  console.log(arr);
+  let newStr = arr.join("-");  
+  let finalStr = newStr.toLowerCase();
+
+  return finalStr;
+}
+
+spinalCase('The_Andy_Griffith_Show');
