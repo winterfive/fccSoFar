@@ -31,3 +31,19 @@ watchList.reduce((sum, current) => {
   averageRating = sum/num;
   
 }, 0);
+
+// Comparing two arrays
+
+function diffArray(arr1, arr2) {
+
+  let newArr = arr1.concat(arr2);
+  let result = [];
+
+  // if newArr[i] in both teh old arrays
+  // skip
+  // if in one old array
+  // add to result 
+  
+}
+
+diffArray([1, 2, 3, 5], [1, 2, 3, 4, 5]);
