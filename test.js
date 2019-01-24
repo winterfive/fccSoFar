@@ -115,3 +115,37 @@ function spinalCase(str) {
 }
 
 spinalCase('The_Andy_Griffith_Show');
+
+// pig latin
+
+function translatePigLatin(str) {
+
+  let newStr = "";
+
+  // regex consonent followed by vowel or two consonents
+
+  let regex = /[^b-df-hj-np-tv-z]/;
+  let regex2 = /[^b-df-hj-np-tv-z][aeiou]{2}/g;
+
+  // starts with two consonent
+  if(regex2.test(str)) {
+    let letters = str.substr(0, 2);
+    let cutString = str.substr(2, str.length - 1);
+    newStr = cutString.concat(letters + "ay");
+    console.log("two cons: " + newStr);
+  }
+  // starts with a consonents
+  else if(regex.test(str)) {
+    let letter = str.substr(0, 1);
+    let cutString = str.substr(1, str.length - 1);
+    newStr = cutString.concat(letter + "ay");
+    console.log("one cons: " + newStr);
+  } else {
+    // starts with a vowel
+    newStr = str.concat("way");
+    console.log("vowel: " + newStr);
+  }  
+  return newStr;
+}
+
+translatePigLatin("california");
