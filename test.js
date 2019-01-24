@@ -51,3 +51,24 @@ function diffArray(arr1, arr2) {
 }
 
 diffArray([1, 2, 3, 5], [1, 2, 3, 4, 5]);
+
+// Arguements, seek and destroy
+
+function destroyer(arr) {
+  let args = Array.prototype.slice.call(arguments);
+  let searchable = [].concat(args[0]);
+  let searchers = args.slice(1);
+  let finalArr = [];
+
+  for(let i = 0; i < searchable.length; i++) {
+
+    if(!searchers.includes(searchable[i])) {
+      finalArr.push(searchable[i]);
+    }
+  }
+  console.log(finalArr)
+
+  return finalArr;  
+}
+
+destroyer([1, 2, 3, 1, 2, 3], 2, 3);
