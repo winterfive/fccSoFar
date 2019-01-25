@@ -336,3 +336,25 @@ function sumUp(total, digit) {
 }
 
 sumFibs(75025);
+
+// Sum all primes <= num
+
+function sumPrimes(num) {
+
+  let sieve = [];
+  let primes = [];
+
+  for (let i = 2; i <= num; ++i) {
+    if (!sieve[i]) {
+      primes.push(i);
+      for (let j = i << 1; j <= num; j += i) {
+        sieve[j] = true;
+      }
+    }
+  }
+
+  let result = primes.reduce((total, amount) => total + amount);
+  return result;  
+}
+
+sumPrimes(73156);
