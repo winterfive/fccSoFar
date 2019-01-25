@@ -248,3 +248,26 @@ function fearNotLetter(str) {
 }
 
 fearNotLetter("abcdefghjklmno");
+
+// Sorted Union
+
+function uniteUnique(arr) {
+
+  let tempArr = [];
+  let finalArr = [];
+
+  for(let arg = 0; arg < arguments.length; arg++) {
+    tempArr.push(...arguments[arg]);
+  }
+
+  for(let i = 0; i < tempArr.length; i++) {
+    if(finalArr.findIndex(tempArr[i]) == -1) {
+      finalArr.push(tempArr[i]);
+    }
+  }
+
+  console.log(finalArr);
+  return finalArr;
+}
+
+uniteUnique([1, 3, 2], [5, 2, 1, 4], [2, 1]);
