@@ -266,3 +266,37 @@ function uniteUnique(arr) {
 }
 
 uniteUnique([1, 3, 2], [5, 2, 1, 4], [2, 1]);
+
+// Convert HTML Entities
+
+function convertHTML(str) {
+  
+  let tempArr = [];
+  let strArr = str.split("");
+
+  for(let i = 0; i < str.length; i++) {
+    if(strArr[i] == "&") {
+      tempArr.push("&amp;");
+    } 
+    else if(strArr[i] == "<") {
+      tempArr.push("&lt;");
+    } 
+    else if(strArr[i] == ">") {
+      tempArr.push("&gt;");
+    } 
+    else if(strArr[i] == '"') {
+      tempArr.push("&quot;");
+    } 
+    else if(strArr[i] == "'") {
+      tempArr.push("&apos;");
+    } else {
+      tempArr.push(strArr[i]);
+    }
+  }
+  
+  let result = tempArr.join("");
+  console.log(result);
+  return result;
+}
+
+convertHTML("Dolce & Gabbana");
