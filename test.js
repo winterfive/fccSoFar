@@ -306,16 +306,33 @@ convertHTML("Dolce & Gabbana");
 function sumFibs(num) {
   
   let numArr = [1, 1];
-  let number = 0;
+  let oddArr = [];
+  let sum = 0;
   let i = 0;
+  let running = true;
 
-  do {
-    number = numArr[i] + numArr[i + 1];
-    numArr.push(number);
+  while(running) {
+    sum = numArr[i] + numArr[i + 1];
+    if(sum <= num) {
+      numArr.push(sum);
+    } else {
+      running = false;
+    }         
     i++;
-  } while (number <= num);
+  };
 
-  
+  numArr.forEach(function(number) {
+    if(number % 2 == 1) {
+      oddArr.push(number);
+    };
+  });
+
+  let result = oddArr.reduce(sumUp);
+  return result;
 }
 
-sumFibs(4);
+function sumUp(total, digit) {
+  return total + digit;
+}
+
+sumFibs(75025);
