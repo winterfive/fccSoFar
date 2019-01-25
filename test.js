@@ -254,17 +254,12 @@ fearNotLetter("abcdefghjklmno");
 function uniteUnique(arr) {
 
   let tempArr = [];
-  let finalArr = [];
 
   for(let arg = 0; arg < arguments.length; arg++) {
     tempArr.push(...arguments[arg]);
   }
 
-  for(let i = 0; i < tempArr.length; i++) {
-    if(finalArr.findIndex(tempArr[i]) == -1) {
-      finalArr.push(tempArr[i]);
-    }
-  }
+  let finalArr = [...new Set(tempArr)];
 
   console.log(finalArr);
   return finalArr;
