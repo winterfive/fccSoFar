@@ -221,3 +221,30 @@ let smallArr = (x, y) => [x, y];
 
 
 pairElement("ATCGA");
+
+// Missing Letters
+
+function fearNotLetter(str) {
+
+  let alpha = "abcdefghijklmnopqrstuvwxyz";
+  let strLen = str.length;
+  let pos = alpha.indexOf(str[0]);
+  //console.log("pos is: " + pos);
+  let compareStr = alpha.substr(pos, strLen);
+  //console.log("compareStr is: " + compareStr);
+  let letter = "";
+
+  for(let i = 0; i < compareStr.length; i++) {
+    console.log("compare: " + compareStr[i] + " str: " + str[i]);
+    if(compareStr[i] !== str[i]) {
+      letter = compareStr[i];
+      break;
+    }
+
+    letter = undefined;
+  }
+  console.log(letter);
+  return letter;
+}
+
+fearNotLetter("abcdefghjklmno");
