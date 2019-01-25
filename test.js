@@ -124,11 +124,19 @@ function translatePigLatin(str) {
 
   // regex consonent followed by vowel or two consonents
 
-  let regex = /[^b-df-hj-np-tv-z]/;
-  let regex2 = /[^b-df-hj-np-tv-z][aeiou]{2}/g;
+  let regex = /^[b-df-hj-np-tv-z]/g;
+  let regex2 = /^[b-df-hj-np-tv-z][b-df-hj-np-tv-z]/g;
+  let regex3 = /^[^aeiou]+$/g;
 
-  // starts with two consonent
-  if(regex2.test(str)) {
+  if(regex3.test(str)) {
+    let letters = str.substr(0, str.length - 2);
+    let cutString = str.substr(str.length - 2, str.length - 1);
+    newStr = cutString.concat(letters + "ay");
+    console.log("last letter vowel: " + newStr);
+  }
+
+  // starts with two consonents
+  else if(regex2.test(str)) {
     let letters = str.substr(0, 2);
     let cutString = str.substr(2, str.length - 1);
     newStr = cutString.concat(letters + "ay");
@@ -145,6 +153,7 @@ function translatePigLatin(str) {
     newStr = str.concat("way");
     console.log("vowel: " + newStr);
   }  
+
   return newStr;
 }
 
