@@ -194,18 +194,17 @@ translatePigLatin("consonant");
 function pairElement(str) {
 
   let finalArr = [];
-  let i = 0;
 
   for(let i = 0; i < str.length; i++) {
 
     // check for each letter
-    if(str(i) == "A") {
+    if(str[i] == "A") {
       finalArr.push(smallArr("A", "T"));
     }
-    else if(str(i) == "T") {
+    else if(str[i] == "T") {
       finalArr.push(smallArr("T", "A"));
     }
-    else if(str(i) == "C") {
+    else if(str[i] == "C") {
       finalArr.push(smallArr("C", "G"));
     }
     else {
@@ -215,11 +214,10 @@ function pairElement(str) {
 
   console.log(finalArr);
   
-  return str;
+  return finalArr;
 }
 
-let smallArr = (x, y) => {
-    return smallArr = [x, y];
-}
+let smallArr = (x, y) => [x, y];
+
 
 pairElement("ATCGA");
