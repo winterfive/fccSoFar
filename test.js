@@ -300,3 +300,22 @@ function convertHTML(str) {
 }
 
 convertHTML("Dolce & Gabbana");
+
+// Sum all odd Fibonacci Numbers
+
+function sumFibs(num) {
+  
+  let numArr = [1, 1];
+  let number = 0;
+  let i = 0;
+
+  do {
+    number = numArr[i] + numArr[i + 1];
+    numArr.push(number);
+    i++;
+  } while (number <= num);
+
+  
+}
+
+sumFibs(4);
