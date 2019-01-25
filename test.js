@@ -188,3 +188,40 @@ function translatePigLatin(str) {
 
 // test here
 translatePigLatin("consonant");
+
+// DNA Pairing Challenge
+
+function pairElement(str) {
+
+  let newArr = str.split();
+  let finalArr = [];
+  let i = 0;
+
+  for(let i = 0; i < newArr.length; i++) {
+
+    // check for each letter
+    if(newArr[i] =="A") {
+      // add to finalArr
+      finalArr.push(smallArr("A", "T"));
+    }
+    else if(newArr[i] == "T") {
+      finalArr.push(smallArr("T", "A"));
+    }
+    else if(newArr[i] == "C") {
+      finalArr.push(smallArr("C", "G"));
+    }
+    else {
+      finalArr.push(smallArr("G", "C"));
+    }    
+  };  
+
+  console.log(finalArr);
+  
+  return str;
+}
+
+let smallArr = (x, y) => {
+    return smallArr = [x, y];
+}
+
+pairElement("GCG");
