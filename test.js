@@ -358,3 +358,24 @@ function sumPrimes(num) {
 }
 
 sumPrimes(73156);
+
+// Find lowest multiple
+
+function smallestCommons(arr) {
+
+  let numArr = [];
+  let srcArr = arr.sort(function(a, b) {
+    return a - b;
+  });
+
+  let len = srcArr[1] - srcArr[0];
+
+  for(let i = 0; i <= len; i++) {
+    numArr[i] = srcArr[0] + i;
+  }
+
+  console.log(numArr)
+}
+
+
+smallestCommons([1,5]);
