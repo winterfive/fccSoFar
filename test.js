@@ -380,10 +380,13 @@ function smallestCommons(arr) {
 
   while(running) {
     x = numArr[0] * j;
+    console.log("x is: " + x);
 
-    running = numArr.forEach(function (number) {
+    running = numArr.every(function(number) {
       x % number == 0;
     });
+
+    console.log("running is:" + running);
 
     if(running) {
       result = x * number;
@@ -392,6 +395,7 @@ function smallestCommons(arr) {
       j++;
     }
   }
+  
 
   console.log(result);
   return result;
