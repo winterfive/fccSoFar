@@ -420,3 +420,32 @@ function dropElements(arr, func) {
 }
 
 dropElements([1, 2, 3], function(n) {return n > 0;})
+
+// Steamroller
+
+let newArr = [];
+
+function steamrollArray(arr) {  
+
+  // if array[i] holds an int
+  // push int into new arr
+  // if arry[i] is another array
+  // go into that array, check for int
+
+  arr.forEach(checkValue(arr));
+
+  return newArr;
+}
+
+function checkValue(arrValue) {
+  if(typeof arrValue == "object") {
+    arrValue = arrValue[0];
+    checkValue(arrValue);
+  } 
+  
+  if(typeof arrValue == "number") {
+      newArr.push(arrValue);
+  }
+}
+
+steamrollArray([1, [2], [3, [[4]]]]);
