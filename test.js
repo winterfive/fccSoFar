@@ -399,3 +399,24 @@ function smallestCommons(arr) {
 }
 
 smallestCommons([1,5]);
+
+// Drop It
+
+function dropElements(arr, func) {
+
+  let newArr = [];
+  let bool = true;
+  let arrLen = arr.length;
+
+  for(let i = 0; i < arrLen; i++) {
+    bool = func(arr[i]);
+
+    if(bool) {
+      newArr = arr.slice(i, arrLen);
+      break;
+    }
+  }
+  return newArr;
+}
+
+dropElements([1, 2, 3], function(n) {return n > 0;})
