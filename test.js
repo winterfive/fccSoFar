@@ -473,10 +473,11 @@ function truthCheck(collection, pre) {
   
   let newArr = [].concat(...collection);
 
-  let bool = newArr.every(function(obj) {
+  let bool = newArr.some(function(obj) {
     if(obj.hasOwnProperty(pre)) {
-      if(obj.pre) {
-        return true;
+      if(!obj.pre) {
+        console.log("got to here");
+        return false;
       }
     }
   });
