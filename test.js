@@ -441,9 +441,7 @@ function checkValue(arrValue) {
   if(typeof arrValue == "object") {
     arrValue = arrValue[0];
     checkValue(arrValue);
-  } 
-  
-  if(typeof arrValue == "number") {
+  } else {
       newArr.push(arrValue);
   }
 }
