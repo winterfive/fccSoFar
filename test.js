@@ -380,7 +380,7 @@ function smallestCommons(arr) {
   }
 
   while(running) {
-    x = numArr[0] * j;
+    x = numArr[len - 1] * j;
 
     check = numArr.every(function(number) {
       return x % number == 0;
