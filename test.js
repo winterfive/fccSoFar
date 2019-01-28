@@ -498,3 +498,39 @@ function truthCheck(collection, pre) {
 }
 
 truthCheck([{"user": "Tinky-Winky", "sex": "male"}, {"user": "Dipsy", "sex": "male"}, {"user": "Laa-Laa", "sex": "female"}, {"user": "Po", "sex": "female"}], "sex");
+
+// Optional Arguments
+
+function addTogether() {
+  
+  let z = arguments[0];
+
+  if(arguments.length == 2) {
+    if(checkForNum(z) && (checkForNum(arguments[1]))) {
+      return z + arguments[1];
+    } else {
+      return undefined;
+    }
+  } else {
+    if(arguments.length == 1 && checkForNum(z)) {
+      // return function
+      return function add(y) {
+        if(checkForNum(y)) {
+          return y + z;
+        } else {
+          return undefined;
+        }      
+      }
+    } else {
+      return undefined;
+    }
+  }
+
+  // Checks if arguement type is a number
+  // varies -> bool  
+  function checkForNum(x) {
+    return(typeof x == 'number');
+  }
+}
+
+addTogether(2)(3);
