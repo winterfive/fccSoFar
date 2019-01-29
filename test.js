@@ -577,7 +577,9 @@ function orbitalPeriod(arr) {
   var GM = 398600.4418;
   var earthRadius = 6367.4447;
 
-  let seconds = (2 * Math.PI) * Math.sqrt(Math.pow(earthRadius, 3) / GM);
+  let seconds = Math.round((2 * Math.PI) * Math.sqrt(Math.pow(earthRadius, 3) / GM));
+
+
   return arr;
 }
 
