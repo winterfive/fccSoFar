@@ -576,11 +576,17 @@ bob.getFullName();
 function orbitalPeriod(arr) {
   var GM = 398600.4418;
   var earthRadius = 6367.4447;
+  let name = "";
+  let newArr = [];
 
-  let seconds = Math.round((2 * Math.PI) * Math.sqrt(Math.pow(earthRadius, 3) / GM));
+  arr.forEach(function(item) {
+    let orbitor = item.name;
+    let velocity = Math.round(Math.sqrt((Math.pow(earthRadius + item.avgAlt, 3) / GM)) * (2 * Math.PI));
+    let newObject = {name: orbitor, orbitalPeriod: velocity};
+    newArr.push(newObject);
+  });
 
-
-  return arr;
+  return newArr;
 }
 
 orbitalPeriod([{name : "sputnik", avgAlt : 35873.5553}]);
