@@ -593,7 +593,7 @@ orbitalPeriod([{name : "sputnik", avgAlt : 35873.5553}]);
 
 // Cash Register
 
-unction checkCashRegister(price, cash, cid) {
+function checkCashRegister(price, cash, cid) {
 
   let drawer = [];
   let total = 0;
@@ -602,15 +602,12 @@ unction checkCashRegister(price, cash, cid) {
   let result = { status: "", change: 0 };
   let newArr = [];
 
-  let changeDue = cash - price;
-  console.log("changeDue: " + changeDue);  
+  let changeDue = cash - price;  
 
   cid.forEach(function(item) {
     total += item[1];
     total = Math.round(total * 10) / 10;
   });
-
-  //console.log("total: " + total);
 
   if(total < changeDue) {
     result.status = "INSUFFICIENT_FUNDS";
@@ -624,18 +621,25 @@ unction checkCashRegister(price, cash, cid) {
     result.status = "OPEN";
 
     for(let i = size - 1; i >= 0; i--) {
+      console.log("changeDue is: " + changeDue);
       if(changeDue >= currency[i]) {
-        //console.log("currency is: " + currency[i]);
         let x = Math.floor(changeDue / currency[i]);
+        //console.log(x);
         let y = x * currency[i];
-        changeDue -= y;
-        newArr.push([cid[i][0], y]);
+        //console.log(y);
+        if(y > cid[i][1]) {
+          changeDue -= cid[i][1];
+          newArr.push([cid[i][0], cid[i][1]]);
+        } else {
+          changeDue -= y;
+          newArr.push([cid[i][0], y]);
+        }         
       }
-    }
+    }      
     result.change = newArr;
   }
-
+  console.log("change is: " + result.change);
   return result; 
 }
 
-checkCashRegister(19.5, 20, [["PENNY", 1.01], ["NICKEL", 2.05], ["DIME", 3.1], ["QUARTER", 4.25], ["ONE", 90], ["FIVE", 55], ["TEN", 20], ["TWENTY", 60], ["ONE HUNDRED", 100]]);
+checkCashRegister(3.26, 100, [["PENNY", 1.01], ["NICKEL", 2.05], ["DIME", 3.1], ["QUARTER", 4.25], ["ONE", 90], ["FIVE", 55], ["TEN", 20], ["TWENTY", 60], ["ONE HUNDRED", 100]]);
