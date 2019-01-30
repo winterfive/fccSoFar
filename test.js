@@ -609,24 +609,25 @@ function checkCashRegister(price, cash, cid) {
     total = Math.round(total * 10) / 10;
   });
 
+  // if change due > till or
+  // till cannot make correct change  TODO
   if(total < changeDue) {
     result.status = "INSUFFICIENT_FUNDS";
     result.change = [];
   }
+  // change due same as till (empties till)
   else if (total == changeDue) {
     result.status = "CLOSED";
     result.change = cid;
   } else {
+
     // you must return change
     result.status = "OPEN";
 
     for(let i = size - 1; i >= 0; i--) {
-      console.log("changeDue is: " + changeDue);
       if(changeDue >= currency[i]) {
         let x = Math.floor(changeDue / currency[i]);
-        //console.log(x);
         let y = x * currency[i];
-        //console.log(y);
         if(y > cid[i][1]) {
           changeDue -= cid[i][1];
           newArr.push([cid[i][0], cid[i][1]]);
@@ -639,8 +640,7 @@ function checkCashRegister(price, cash, cid) {
     }      
     result.change = newArr;
   }
-  console.log("change is: " + result.change);
   return result; 
 }
 
-checkCashRegister(3.26, 100, [["PENNY", 1.01], ["NICKEL", 2.05], ["DIME", 3.1], ["QUARTER", 4.25], ["ONE", 90], ["FIVE", 55], ["TEN", 20], ["TWENTY", 60], ["ONE HUNDRED", 100]]);
+checkCashRegister(19.5, 20, [["PENNY", 0.01], ["NICKEL", 0], ["DIME", 0], ["QUARTER", 0], ["ONE", 1], ["FIVE", 0], ["TEN", 0], ["TWENTY", 0], ["ONE HUNDRED", 0]]);
