@@ -596,30 +596,36 @@ orbitalPeriod([{name : "sputnik", avgAlt : 35873.5553}]);
 function checkCashRegister(price, cash, cid) {
 
   let drawer = [];
-  
-  /*
-  cid.forEach(function(item) {
-    let smallArr = [item[0], item[1]];
-    drawer.push(smallArr);
-  });
-  */
-
-  let changeDue = cash - price;
-
+  let total = 0;
   let size = cid.length;
   let currency = [0.01, 0.05, 0.10, 0.25, 1, 5, 10, 20, 100];
+  let result = { status: "", change: 0 };
 
-  for(let i = size - 1; i >= 0; i--) {
+  let changeDue = cash - price;
+  console.log("changeDue: " + changeDue);  
+
+  cid.forEach(function(item) {
+    total += item[1];
+    total = Math.round(total * 10) / 10;
+  });
+
+  if(total < changeDue) {
+    result.status = "INSUFFICIENT_FUNDS";
+    result.change = [];
+  }
+  else if (total == changeDue) {
+    result.status = "CLOSED";
+    result.change = cid;
+  } else {
+    // you must return change
+    result.status = "OPEN";
     
-    // add up cash in drawer and see if it's more then changeDue
-    // if so, return {status: "INSUFFICIENT_FUNDS", change: []}
-    // if cid = changeDue
-    // return {status: "CLOSED", change: [all of cid], }
-    // else return {status: "OPEN", change: [new amounts in cid]}
-    // figuring out the remaining amounts in the drawer
   }
 
-  console.log(cid);
+  console.log("total: " + total);
+
+  for(let i = size - 1; i >= 0; i--) {
+  }
 }
 
 checkCashRegister(19.5, 20, [["PENNY", 1.01], ["NICKEL", 2.05], ["DIME", 3.1], ["QUARTER", 4.25], ["ONE", 90], ["FIVE", 55], ["TEN", 20], ["TWENTY", 60], ["ONE HUNDRED", 100]]);
