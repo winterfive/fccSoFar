@@ -593,13 +593,14 @@ orbitalPeriod([{name : "sputnik", avgAlt : 35873.5553}]);
 
 // Cash Register
 
-function checkCashRegister(price, cash, cid) {
+unction checkCashRegister(price, cash, cid) {
 
   let drawer = [];
   let total = 0;
   let size = cid.length;
   let currency = [0.01, 0.05, 0.10, 0.25, 1, 5, 10, 20, 100];
   let result = { status: "", change: 0 };
+  let newArr = [];
 
   let changeDue = cash - price;
   console.log("changeDue: " + changeDue);  
@@ -609,7 +610,7 @@ function checkCashRegister(price, cash, cid) {
     total = Math.round(total * 10) / 10;
   });
 
-  console.log("total: " + total);
+  //console.log("total: " + total);
 
   if(total < changeDue) {
     result.status = "INSUFFICIENT_FUNDS";
@@ -624,20 +625,17 @@ function checkCashRegister(price, cash, cid) {
 
     for(let i = size - 1; i >= 0; i--) {
       if(changeDue >= currency[i]) {
-        console.log("currency is: " + currency[i]);
+        //console.log("currency is: " + currency[i]);
         let x = Math.floor(changeDue / currency[i]);
         let y = x * currency[i];
-        console.log("x is: " + x);
-        console.log("y is: " + y);
         changeDue -= y;
-        cid[i][1] -= y;
-        console.log("changeDue: " + changeDue);
-        console.log("cid: " + cid);
+        newArr.push([cid[i][0], y]);
       }
     }
-    
-    result.change = cid;
-  }  
+    result.change = newArr;
+  }
+
+  return result; 
 }
 
 checkCashRegister(19.5, 20, [["PENNY", 1.01], ["NICKEL", 2.05], ["DIME", 3.1], ["QUARTER", 4.25], ["ONE", 90], ["FIVE", 55], ["TEN", 20], ["TWENTY", 60], ["ONE HUNDRED", 100]]);
