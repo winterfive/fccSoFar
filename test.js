@@ -609,19 +609,15 @@ function checkCashRegister(price, cash, cid) {
     total = Math.round(total * 10) / 10;
   });
 
-  // if change due > till or
-  // till cannot make correct change  TODO
   if(total < changeDue) {
     result.status = "INSUFFICIENT_FUNDS";
     result.change = [];
   }
-  // change due same as till (empties till)
   else if (total == changeDue) {
     result.status = "CLOSED";
     result.change = cid;
   } else {
-
-    // you must return change
+    // you must try to return change
     result.status = "OPEN";
 
     for(let i = size - 1; i >= 0; i--) {
@@ -637,8 +633,13 @@ function checkCashRegister(price, cash, cid) {
         }
         changeDue = changeDue.toPrecision(4);        
       }
-    }      
+    }
     result.change = newArr;
+
+    if(changeDue > 0) {
+      result.status = "INSUFFICIENT_FUNDS";
+      result.change = [];
+    }    
   }
   return result; 
 }
