@@ -633,7 +633,8 @@ function checkCashRegister(price, cash, cid) {
         } else {
           changeDue -= y;
           newArr.push([cid[i][0], y]);
-        }         
+        }
+        changeDue = changeDue.toPrecision(4);        
       }
     }      
     result.change = newArr;
